@@ -2,6 +2,24 @@ function sendMessage() {
     const userMessage = document.getElementById('user-message');
     const chatLog = document.getElementById('chat-log');
 
+    document.addEventListener(
+        "keydown", 
+        function (event) {
+            if (event.defaultPrevented) {
+                return;
+            }
+
+            switch (event.code) {
+                case "Enter":
+                    console.log("pressed enter");
+                    event.preventDefault();
+                    document.getElementById("chat-button").click();
+                    break;
+            }
+        },
+        true,
+    );
+
     //display message
     const userMessageContainer = document.createElement('div');
 
@@ -26,28 +44,9 @@ function sendMessage() {
     userMessage.value = '';
 
     //scroll to the bottom of the chat log
-    chatLog.scrollTop =chatLog.scrollHeight;
+    chatLog.scrollTop = chatLog.scrollHeight;
 
     function generateResponse(userMessage) {
         return "oh, nothing. just waiting to chat with you!";
     }
-
-    window.addEventListener(
-        "keydown", 
-        (event) => {
-            if(event.defaultPrevented){
-                return;
-            }
-
-            switch (event.code){
-                case "Enter":
-                    console.log("pressed enter");
-                    event.preventDefault();
-                    document.getElementById("chat-button").click();
-                    break;
-            }
-        },
-        true,
-        );
-    
 }
