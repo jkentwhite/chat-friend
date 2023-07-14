@@ -1,25 +1,16 @@
+window.addEventListener("keypress", function(event){
+    if(event.key == "Enter"){
+        console.log(event.key);
+        event.preventDefault();
+        sendMessage();
+    }
+})
+
 function sendMessage() {
     const userMessage = document.getElementById('user-message');
     const chatLog = document.getElementById('chat-log');
 
-    document.addEventListener(
-        "keydown", 
-        function (event) {
-            if (event.defaultPrevented) {
-                return;
-            }
-
-            switch (event.code) {
-                case "Enter":
-                    console.log("pressed enter");
-                    event.preventDefault();
-                    document.getElementById("chat-button").click();
-                    break;
-            }
-        },
-        true,
-    );
-
+    userMessage.addEventListener
     //display message
     const userMessageContainer = document.createElement('div');
 
