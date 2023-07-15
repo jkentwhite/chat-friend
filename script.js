@@ -10,12 +10,13 @@ function sendMessage() {
     const userMessage = document.getElementById('user-message');
     const chatLog = document.getElementById('chat-log');
 
-    userMessage.addEventListener
+    if(!userMessage.value) return;
     //display message
     const userMessageContainer = document.createElement('div');
 
     userMessageContainer.classList.add('message');
-    userMessageContainer.textContent = userMessage.value;
+    userMessageContainer.classList.add('right-align');
+    userMessageContainer.textContent = `${userMessage.value}\n`;
 
     chatLog.appendChild(userMessageContainer);
 
@@ -27,7 +28,8 @@ function sendMessage() {
     //display the response
     const responseContainer = document.createElement('div');
     responseContainer.classList.add('message');
-    responseContainer.textContent = response;
+    responseContainer.classList.add('left-align');
+    responseContainer.textContent = `${response}\n\r`;
 
     chatLog.appendChild(responseContainer);
 
@@ -38,6 +40,8 @@ function sendMessage() {
     chatLog.scrollTop = chatLog.scrollHeight;
 
     function generateResponse(userMessage) {
+        //generative response based on sentiment of user input
+        //using LLM 
         return "oh, nothing. just waiting to chat with you!";
     }
 }
